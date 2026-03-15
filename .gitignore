@@ -17,3 +17,9 @@ backend/test-results/
 # OS files
 .DS_Store
 Thumbs.db
+
+# Jest coverage output
+backend/coverage/
+
+# Word temp files
+~$*.docx

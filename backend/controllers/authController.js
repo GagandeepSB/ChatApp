@@ -20,6 +20,8 @@ const userResponse = (user) => ({
 const signup = asyncHandler(async (req, res) => {
   const { email, password } = req.body
   if (!email || !password) throw new ApiError(400, 'VALIDATION_ERROR', 'Email and password required')
+  if (typeof email !== 'string' || typeof password !== 'string')
+    throw new ApiError(400, 'VALIDATION_ERROR', 'Email and password must be strings')
   const exists = await User.findOne({ email })
   if (exists) throw new ApiError(409, 'ALREADY_EXISTS', 'Email already registered')
   const hashed = await bcrypt.hash(password, 10)
@@ -32,6 +34,8 @@ const signup = asyncHandler(async (req, res) => {
 const login = asyncHandler(async (req, res) => {
   const { email, password } = req.body
   if (!email || !password) throw new ApiError(400, 'VALIDATION_ERROR', 'Email and password required')
+  if (typeof email !== 'string' || typeof password !== 'string')
+    throw new ApiError(400, 'VALIDATION_ERROR', 'Email and password must be strings')
   const user = await User.findOne({ email })
   if (!user) throw new ApiError(404, 'NOT_FOUND', 'Email not found')
   const match = await bcrypt.compare(password, user.password)
@@ -69,7 +73,7 @@ const updateProfile = asyncHandler(async (req, res) => {
 
 const addProfileImage = asyncHandler(async (req, res) => {
   if (!req.file) throw new ApiError(400, 'VALIDATION_ERROR', 'No image uploaded')
-  const imagePath = `/uploads/profiles/${req.file.filename}`
+  const imagePath = `uploads/profiles/${req.file.filename}`
   await User.findByIdAndUpdate(req.user.id, { image: imagePath })
   res.json({ success: true, data: { image: imagePath } })
 })
