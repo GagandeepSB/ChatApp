@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+
+# Environment variables (contains real credentials — do not commit)
+backend/.env
+
+# User-uploaded files (auto-created by server at runtime)
+backend/uploads/
+
+# Temp files from mongodb-memory-server (used during tests)
+backend/.tmp/
+
+# Playwright test artifacts
+backend/playwright-report/
+backend/test-results/
+
+# OS files
+.DS_Store
+Thumbs.db
