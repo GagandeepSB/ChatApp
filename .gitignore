@@ -14,12 +14,6 @@ backend/.tmp/
 backend/playwright-report/
 backend/test-results/
 
-# Jest coverage output (auto-generated)
-backend/coverage/
-
 # OS files
 .DS_Store
 Thumbs.db
-
-# Word temporary lock files
-~$*.docx

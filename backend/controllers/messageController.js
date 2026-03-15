@@ -19,8 +19,8 @@ const getMessages = asyncHandler(async (req, res) => {
 
 const uploadFile = asyncHandler(async (req, res) => {
   if (!req.file) throw new ApiError(400, 'VALIDATION_ERROR', 'No file uploaded')
-  const filePath = `uploads/files/${req.file.filename}`
-  res.json({ filePath })
+  const filePath = '/uploads/files/' + req.file.filename
+  res.status(201).json({ success: true, data: { filePath } })
 })
 
 const deleteDM = asyncHandler(async (req, res) => {
