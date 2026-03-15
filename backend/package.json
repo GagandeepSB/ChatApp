@@ -21,7 +21,8 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "test": "jest --runInBand --forceExit",
+    "test": "jest --coverage --runInBand --forceExit",
+    "test:system": "jest --testPathPatterns=tests/system --runInBand --forceExit",
     "test:watch": "jest --watch --runInBand",
     "test:coverage": "jest --coverage --runInBand --forceExit",
     "test:e2e": "npx playwright test"
